@@ -1,0 +1,26 @@
+<html>
+    <link rel="stylesheet" href="/static/cars.css">
+    <body>
+        <h1>CARS</h1>
+        <ul>
+        {% for car in cars_list %}
+            <li>{{car['make']}} - {{car['model']}}</li>
+                <ul>
+                    <li>CILINDRATA: {{car['cc']}}</li>
+                    <li>CAVALLI: {{car['cv']}}</li>
+                    <li>ALIMENTAZIONE: {{car['engine']}}</li>
+                    <li>PRICE: {{car['price']}}€</li>
+                    <li>USATO: {% if car['used'] == True: %}SI {% else: %} NO {% endif %}</li>
+                </ul>
+        {% endfor %}
+    </ul>
+    <h1>FILTERS:</h1>
+    <form method="POST">
+        {{form.mark_filter.label}}{{form.mark_filter}}<br>
+        {{form.max_pot.label}}{{form.max_pot}}<br>
+        {{form.max_price.label}}{{form.max_price}}<br>
+        {{form.used.label}}{{form.used}}<br>
+        {{form.submit}}
+    </form>
+    </body>
+</html>
